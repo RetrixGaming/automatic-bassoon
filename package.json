@@ -1,17 +1,23 @@
 {
   "dependencies": {
     "discord.js": "^14.22.1",
-    "dotenv": "^17.2.3"
+    "dotenv": "^17.2.3",
+    "express": "^4.19.2"
   },
   "name": "bot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A feature-rich Discord bot with moderation, currency, games, and modmail.",
+  "main": "bot.js",
   "devDependencies": {},
   "scripts": {
+    "start": "node bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "discord",
+    "bot",
+    "nodejs"
+  ],
   "author": "",
   "license": "ISC"
 }
