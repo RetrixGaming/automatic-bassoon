@@ -29,7 +29,7 @@ const client = new Client({
 
 // --- Import Modules ---
 const { startGame, handleGuess } = require('./guess.js');
-const { startTicTacToe } = require('./ticTacToe.js');
+const { startTicTacToe } = require('./('./ticTacToe.js');
 const { showBalance, begCoins, startWork, coinFlip, depositCoins, withdrawCoins, addCoins, giveCoins } = require('./currency.js');
 const { kickUser, banUser, unbanUser, timeoutUser, clearMessages, setSlowmode } = require('./moderation.js');
 const { handleModmail, handleModReply, closeTicket, handleAnonymousReply } = require('./modmail.js');
@@ -119,7 +119,8 @@ client.on('messageCreate', async message => {
            categoryEmbed.setDescription('Earn and manage your coins:').addFields({ name: `\`${prefix}bal\``, value: 'Check your balance and bank' }, { name: `\`${prefix}beg\``, value: 'Beg for coins' }, { name: `\`${prefix}work\``, value: 'Choose a job to work' }, { name: `\`${prefix}coinflip <amount>\` or \`${prefix}cf <amount>\``, value: 'Flip a coin to double or lose your bet' }, { name: `\`${prefix}deposit <amount>\``, value: 'Deposit coins to your bank' }, { name: `\`${prefix}withdraw <amount>\``, value: 'Withdraw coins from your bank' }, { name: `\`${prefix}addcoins [amount]\``, value: 'Owner only: Add coins to yourself' }, { name: `\`${prefix}give @user <amount>\``, value: 'Transfer coins to another user' });
           break;
         case 'general':
-          categoryEmbed.setDescription('General bot commands:').addFields({ name: `\`${prefix}ping\``, value: 'Check bot latency' }, { name: `\`${prefix}hi\``, value: 'Get a friendly greeting' }, { name: `\`${prefix}help\``, value: 'Show this help menu' });
+          // NOTE: Added new commands to the help menu description for 'general'
+          categoryEmbed.setDescription('General bot commands:').addFields({ name: `\`${prefix}ping\``, value: 'Check bot latency' }, { name: `\`${prefix}hi\``, value: 'Get a friendly greeting' }, { name: `\`${prefix}d\``, value: 'A special greeting for a special devil' }, { name: `\`${prefix}v\``, value: 'A special greeting for a certain user' }, { name: `\`${prefix}help\``, value: 'Show this help menu' });
           break;
       }
       await interaction.update({ embeds: [categoryEmbed], components: [row] });
@@ -135,6 +136,14 @@ client.on('messageCreate', async message => {
   } else if (command === 'hi') {
     return message.reply('Hello 👋');
   } 
+  // --- NEW CUSTOM REPLY COMMANDS ---
+  else if (command === 'd') {
+    // Reply for command 'd'
+    return message.reply('<@1263004358379966504> is the real devil');
+  } else if (command === 'v') {
+    // Reply for command 'v'
+    return message.reply('<@1195808542628774001> Hello There');
+  }
   // --- MODERATION COMMANDS ---
   else if (command === 'kick') {
     return kickUser(message, args);
