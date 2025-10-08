@@ -29,10 +29,11 @@ const client = new Client({
 
 // --- Import Modules ---
 const { startGame, handleGuess } = require('./guess.js');
-const { startTicTacToe } = require('./('./ticTacToe.js');
+const { startTicTacToe } = require('./ticTacToe.js'); // <-- CORRECTED LINE
 const { showBalance, begCoins, startWork, coinFlip, depositCoins, withdrawCoins, addCoins, giveCoins } = require('./currency.js');
 const { kickUser, banUser, unbanUser, timeoutUser, clearMessages, setSlowmode } = require('./moderation.js');
 const { handleModmail, handleModReply, closeTicket, handleAnonymousReply } = require('./modmail.js');
+// ... rest of bot.js
 
 // --- Bot Ready Event ---
 client.once('clientReady', () => {
@@ -212,3 +213,4 @@ client.on('messageCreate', async message => {
 // --- Login the Bot ---
 keepAlive(); // Start the web server
 client.login(process.env.DISCORD_TOKEN);
+
